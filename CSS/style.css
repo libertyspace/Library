@@ -1,0 +1,193 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* My code  */
+
+:root {
+  --dark-100: #2b2d42;
+  --green-100: #e7eee7;
+  --green-200: #9ebc9f;
+  --green-300: #44633f;
+  --green-400: #134611;
+  --violet-100:#616594;
+}
+
+body {
+
+  background-color: var(--dark-100);
+  color: var(--green-100);
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+
+main {
+  width: 85%;
+
+}
+.center {
+  align-self: center;
+  justify-self: center;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}
+
+header {
+  /* background-color: var(--violet-100); */
+}
+
+#library {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 1rem;
+  
+  justify-self: center;
+}
+
+#interaction {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  justify-self: center;
+  width: 100%;
+}
+
+#interaction > p {
+  justify-items: center;
+}
+
+#interaction > div {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 30fr;
+  gap: 1rem;
+  border-radius: 10px;
+  border: 0px solid var(--violet-100);
+  box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.8);
+  max-height: 500px;
+}
+
+.grid-row {
+  display:grid;
+  grid-template-rows: 1fr 1fr 1fr 8fr 2fr;
+  gap: 1fr;
+}
+
+.padding {
+  padding: 0.8rem;
+}
+
+.divCardLeftSection {
+  background-color: var(--violet-100);
+  border-radius: 8px 0px 0px 7px;
+
+}
+
+.checkbox {
+  justify-self: start;
+}
+
+.read-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.overflow-auto {
+  overflow: scroll;
+  max-height: 250px;
+}
+
+.grid-form-inputs {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.grid-form-description {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}
+
+form {
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+}
