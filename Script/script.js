@@ -7,7 +7,7 @@ const readButtons = document.querySelectorAll("buttonReadStatus");
 
 //Modal elements
 
-// defining Elements
+// Creating the form in JavcaScirpt - Variables
 
 let divForm = document.createElement("div");
 let formForm = document.createElement("form");
@@ -58,7 +58,7 @@ buttonFormSubmit.setAttribute("id", "button-submit");
 buttonFormReset.setAttribute("type", "reset");
 buttonFormCancel.setAttribute("type", "button");
 
-// Appends
+// Appending to into the DOM
 
 dialog.appendChild(divForm);
 divForm.appendChild(formForm);
@@ -90,6 +90,7 @@ buttonFormReset.textContent = "Reset";
 buttonFormCancel.textContent = "Cancel";
 
 // setting the classes
+
 divFormTitle.classList.toggle("grid-form-inputs");
 divFormAuthor.classList.toggle("grid-form-inputs");
 divFormGenre.classList.toggle("grid-form-inputs");
@@ -117,37 +118,55 @@ Book.prototype.setReadStatus = function () {
   }
 };
 
+// Adding frew books as example
+
 let book1 = new Book(
   "The Hunger Games",
   "Suzanne Collins",
   "Fantasy",
-  "Could you survive on your own in the wild, with every one out to make sure you don't live to see the morning? In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV. Sixteen-year-old Katniss Everdeen, who lives alone with her mother and younger sister, regards it as a death sentence when she steps forward to take her sister's place in the Games. But Katniss has been close to dead before—and survival, for her, is second nature. Without really meaning to, she becomes a contender. But if she is to win, she will have to start making choices that weight survival against humanity and life against love."
+  "Could you urvive on your own in the wild, with every one out to make sure you don't live to see the morning? In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV. Sixteen-year-old Katniss Everdeen, who lives alone with her mother and younger sister, regards it as a death sentence when she steps forward to take her sister's place in the Games. But Katniss has been close to dead before—and survival, for her, is second nature. Without really meaning to, she becomes a contender. But if she is to win, she will have to start making choices that weight survival against humanity and life against love.",
+  "unread"
 );
 
 let book2 = new Book(
   "Harry Potter and the Order of the Phoenix",
   "J.K. Rowling",
   "Fiction",
-  "Harry Potter is about to start his fifth year at Hogwarts School of Witchcraft and Wizardry. Unlike most schoolboys, Harry never enjoys his summer holidays, but this summer is even worse than usual. The Dursleys, of course, are making his life a misery, but even his best friends, Ron and Hermione, seem to be neglecting him. Harry has had enough. He is beginning to think he must do something, anything, to change his situation, when the summer holidays come to an end in a very dramatic fashion. What Harry is about to discover in his new year at Hogwarts will turn his world upside down..."
+  "Harry Potter is about to start his fifth year at Hogwarts School of Witchcraft and Wizardry. Unlike most schoolboys, Harry never enjoys his summer holidays, but this summer is even worse than usual. The Dursleys, of course, are making his life a misery, but even his best friends, Ron and Hermione, seem to be neglecting him. Harry has had enough. He is beginning to think he must do something, anything, to change his situation, when the summer holidays come to an end in a very dramatic fashion. What Harry is about to discover in his new year at Hogwarts will turn his world upside down...",
+  "unread"
 );
 
 let book3 = new Book(
   "Pride and Prejudice",
   "Jane Austen",
   "Classics",
-  'Since its immediate success in 1813, Pride and Prejudice has remained one of the most popular novels in the English language. Jane Austen called this brilliant work "her own darling child" and its vivacious heroine, Elizabeth Bennet, "as delightful a creature as ever appeared in print." The romantic clash between the opinionated Elizabeth and her proud beau, Mr. Darcy, is a splendid performance of civilized sparring. And Jane Austen\'s radiant wit sparkles as her characters dance a delicate quadrille of flirtation and intrigue, making this book the most superb comedy of manners of Regency England.'
+  'Since its immediate success in 1813, Pride and Prejudice has remained one of the most popular novels in the English language. Jane Austen called this brilliant work "her own darling child" and its vivacious heroine, Elizabeth Bennet, "as delightful a creature as ever appeared in print." The romantic clash between the opinionated Elizabeth and her proud beau, Mr. Darcy, is a splendid performance of civilized sparring. And Jane Austen\'s radiant wit sparkles as her characters dance a delicate quadrille of flirtation and intrigue, making this book the most superb comedy of manners of Regency England.',
+  "unread"
 );
 
 let book4 = new Book(
   "Twilight",
   "Stephenie Meyer",
   "Vampires",
-  "About three things I was absolutely positive. First, Edward was a vampire. Second, there was a part of him - and I didn't know how dominant that part might be - that thirsted for my blood. And third, I was unconditionally and irrevocably in love with him.Deeply seductive and extraordinarily suspenseful, Twilight is a love story with bite."
+  "About three things I was absolutely positive. First, Edward was a vampire. Second, there was a part of him - and I didn't know how dominant that part might be - that thirsted for my blood. And third, I was unconditionally and irrevocably in love with him.Deeply seductive and extraordinarily suspenseful, Twilight is a love story with bite.",
+  "unread"
 );
+
+// Functions
+
+// Removes Book from the myLibrary Array
+
+function removeBookFromLibrary(index) {
+  myLibrary.splice(index, 1);
+}
+
+// Function to push to books in the myLibrary array
 
 function addBookToLibraryArray(book) {
   return myLibrary.push(book);
 }
+
+// Function to build a Card from a book into the DOM
 
 function addBookToLibraryDom(book) {
   // Variables
@@ -162,13 +181,14 @@ function addBookToLibraryDom(book) {
   let pCardDescription = document.createElement("p");
   let divCardDesciption = document.createElement("div");
   let divCardReadToggle = document.createElement("div");
-
   let buttonCardReadStatus = document.createElement("button");
   let buttonCardRemove = document.createElement("button");
+
   // Setting Attributes
 
   buttonCardReadStatus.setAttribute("class", "buttonReadStatus");
   buttonCardRemove.setAttribute("class", "buttonCardRemove");
+
   // Adding Classes
 
   divCard.classList.toggle("card");
@@ -201,19 +221,24 @@ function addBookToLibraryDom(book) {
   pCardDescription.textContent = "Descirption: " + book.description;
   buttonCardReadStatus.textContent = "Read";
   buttonCardRemove.textContent = "Remove";
-
-  buttonCardRemove.addEventListener("click", function (e) {});
 }
 
+// Event Listeners
+
+// Show the Dialog - Button "Add a New Book"
+
 btnNewEntry.addEventListener("click", function (e) {
+  e.preventDefault();
   dialog.showModal();
 });
+
+// Cancel Button to exit the Dialog Box
 
 buttonFormCancel.addEventListener("click", function (e) {
   dialog.close();
 });
 
-// submit Button Listener
+// Submit Button of the Form in the Dialog Box
 
 buttonFormSubmit.addEventListener("click", function (e) {
   e.preventDefault();
@@ -229,20 +254,7 @@ buttonFormSubmit.addEventListener("click", function (e) {
   newBook.index = myLibrary.length - 1;
 });
 
-addBookToLibraryArray(book1);
-addBookToLibraryArray(book2);
-addBookToLibraryArray(book3);
-addBookToLibraryArray(book4);
-
-for (let i = 0; i < myLibrary.length; i++) {
-  myLibrary[i].index = i;
-}
-for (book of myLibrary) {
-  addBookToLibraryDom(book);
-}
-console.log(myLibrary);
-
-const removeButtons = document.querySelectorAll(".buttonCardRemove");
+// Button Remove on the Cards - Removes the card
 
 libraryList.addEventListener("click", function (e) {
   if (e.target.classList.contains("buttonCardRemove")) {
@@ -254,13 +266,14 @@ libraryList.addEventListener("click", function (e) {
   }
 });
 
+// Button Read on the Cards - Marks the Card as read/unread
+
 libraryList.addEventListener("click", function (e) {
   if (e.target.classList.contains("buttonReadStatus")) {
     e.preventDefault();
     const card = e.target.closest(".card");
     const index = Array.from(libraryList.children).indexOf(card);
     myLibrary[index].setReadStatus();
-    console.log(myLibrary[index]);
     card.classList.toggle("card-read");
     if (e.target.textContent === "Read") {
       e.target.textContent = "Unread";
@@ -270,6 +283,15 @@ libraryList.addEventListener("click", function (e) {
   }
 });
 
-function removeBookFromLibrary(index) {
-  myLibrary.splice(index, 1);
+//Adding the books we predefined in the Array
+
+addBookToLibraryArray(book1);
+addBookToLibraryArray(book2);
+addBookToLibraryArray(book3);
+addBookToLibraryArray(book4);
+
+// Adding the books we predefined into the Doom
+
+for (book of myLibrary) {
+  addBookToLibraryDom(book);
 }

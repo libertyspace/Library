@@ -75,19 +75,30 @@ select {
 
 /* My code  */
 
+#description {
+  max-height: 250px;
+}
+
+@font-face {
+  font-family: daniel;
+  src: url(../Fonts/daniel/daniel.ttf);
+}
+
 :root {
-  --dark-100: #2b2d42;
-  --green-100: #e7eee7;
-  --green-200: #9ebc9f;
-  --green-300: #44633f;
-  --green-400: #134611;
-  --violet-100:#616594;
+  
+  --white-100: #f0edee;
+  --green-500: #174F31;
+  --green-100: #59CD90;
+  --green-300: #44633F;
+  --violet-100: #9093B6;
+  --violet-300:#616594;
+  --violet-500: #2b2d42;
 }
 
 body {
 
-  background-color: var(--dark-100);
-  color: var(--green-100);
+  background-color: var(--violet-500);
+  color: var(--white-100);
   display: grid;
   grid-template-rows: 10rem 10fr 1fr;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -101,13 +112,10 @@ main {
   
 }
 
-.center {
-  align-self: center;
-  justify-self: center;
-}
+
 
 header {
-  /* background-color: var(--violet-100); */
+  /* background-color: var(--violet-300); */
   position: sticky;
   top: 0px;
   width: 100%;
@@ -120,64 +128,95 @@ header {
 }
 
 footer {
-  background-color: var(--violet-100);
+  background-color: var(--violet-300);
   width: 100%;
   height: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-footer > * {
+
+
+footer > div > p {
+  font-family: daniel;
+  font-size: 1.2rem;
   align-self: center;
-  justify-self: center;
+}
+
+
+footer > div > a > picture > svg {
+  fill: white;
+  width: 3rem;
+}
+
+footer > div > p:hover {
+  color: var(--green-100);
+}
+
+footer > div > a > picture > svg:hover, 
+footer > div > p:hover {
+  fill: var(--green-100);
+}
+
+footer > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-items: center;
+  align-items: center;
+  width: 250px;
 }
 
 dialog {
   min-width: 350px;
   border-radius: 10px;
   border: 0px;
-  background-color: var(--dark-100);
-  color: var(--green-100);
+  background-color: var(--violet-500);
+  color: var(--white-100);
   box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.8);
 }
 
 dialog::backdrop {
-  background-color: var(--dark-100);
+  background-color: var(--violet-500);
   opacity: 0.8;
 }
 
 #library {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 350px)); 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); 
   justify-content: center;
   gap: 1rem;
-
+  padding: 1rem;
 }
 
-
-
-
-
+.center {
+  align-self: center;
+  justify-self: center;
+}
 
 .card {
   display: grid;
   grid-template-columns: 1fr 30fr;
   gap: 1rem;
   border-radius: 10px;
-  border: 0px solid var(--violet-100);
+  border: 0px solid var(--violet-300);
   box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.8);
   max-height: 600px;
 }
 
 .card-read {
-  background-color: var(--green-400);
+  background-color: var(--green-500);
+  /* color: var(--violet-500); */
+  
 }
 
 .container-header {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: var(--violet-100);
+  background-color: var(--violet-300);
   box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.8);
-  color: var(--dark-100);
+  color: var(--violet-500);
 }
 
 .container-header > h2 {
@@ -195,25 +234,27 @@ dialog::backdrop {
 }
 
 .divCardLeftSection {
-  background-color: var(--violet-100);
+  background-color: var(--violet-300);
   border-radius: 8px 0px 0px 7px;
 
 }
 
 .read-toggle {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   max-height: 1rem;
   align-self: center;
+  padding: 1rem;
+  gap: 2rem;
 }
 
 #pre-text > p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 #pre-text > button {
   width: 180px;
-  border: 1px solid var(--dark-100);
+  border: 1px solid var(--violet-500);
   box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.8);
   justify-self: center;
 }
@@ -221,7 +262,7 @@ dialog::backdrop {
 #pre-text {
   display: flex;
   flex-direction: column;
-  background-color:  var(--dark-100);
+  background-color:  var(--violet-500);
   width: 100%;
   flex: 1;
   gap: 1rem;
@@ -232,11 +273,14 @@ dialog::backdrop {
 }
 
 .buttonReadStatus {
-  grid-column: 2/3;
+  grid-column: 1;
+  box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.3);
 }
 
 .buttonCardRemove {
-  grid-column-start: 4;
+grid-column-start: 2;
+box-shadow: 0px 0px 10px rgb(97, 101, 148, 0.3);
+
 } 
 
 
@@ -263,8 +307,7 @@ dialog::backdrop {
 
 .grid-form {
   display: grid;
-  grid-template-rows: 1fr;;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 form {
@@ -277,5 +320,10 @@ button {
   background-color: #616594;
   border-radius: 10px;
   border: 0px;
-  color: var(--green-100);
+  color: var(--white-100);
+}
+
+button:hover {
+  background-color: var(--green-100);
+  color: var(--violet-500);
 }
